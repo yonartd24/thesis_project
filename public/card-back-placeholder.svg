@@ -1,0 +1,15 @@
+<svg width="1200" height="760" viewBox="0 0 1200 760" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="760" rx="36" fill="#FBFAF7"/>
+  <rect x="32" y="32" width="1136" height="120" rx="18" fill="#C9342C"/>
+  <text x="72" y="88" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700" letter-spacing="3">THESIS / 8TH FLOOR HABITS</text>
+  <text x="72" y="126" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="600" letter-spacing="2">PLACEHOLDER CARD BACK</text>
+  <text x="868" y="88" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">SCAN PENDING</text>
+  <text x="868" y="120" fill="white" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" text-anchor="end">UPLOAD TO /public/doodles/</text>
+  <rect x="72" y="212" width="1056" height="412" rx="20" fill="white" stroke="#D2CCC1" stroke-width="4"/>
+  <path d="M180 484C228 370 334 322 454 352C530 370 598 428 676 432C760 436 804 370 878 344C942 322 1024 338 1064 400" stroke="#C9342C" stroke-width="20" stroke-linecap="round"/>
+  <path d="M188 552C280 516 346 592 430 560C530 522 590 468 668 490C754 514 838 610 1000 564" stroke="#57B5EE" stroke-width="18" stroke-linecap="round"/>
+  <path d="M212 394C264 420 310 470 368 478C468 490 534 408 622 404C700 400 782 464 846 470" stroke="#F0B72A" stroke-width="14" stroke-linecap="round"/>
+  <text x="600" y="292" fill="#101010" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" text-anchor="middle">Drop scanned doodles into public/doodles and keep the original filename from doodle_storage_path.</text>
+  <text x="72" y="678" fill="#101010" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">Repeated placeholder until the real scans are ready.</text>
+  <text x="1114" y="678" fill="#C9342C" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="900" text-anchor="end">THANKS!</text>
+</svg>
