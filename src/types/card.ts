@@ -33,6 +33,8 @@ export type OverviewStagePanel = {
   averageScores: [number, number, number, number];
   ageRows: DistributionRow[];
   genderRows: DistributionRow[];
+  relatedImageSrc: string | null;
+  relatedAssetName: string | null;
 };
 
 export type OverviewMetrics = {

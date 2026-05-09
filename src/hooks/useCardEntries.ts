@@ -49,7 +49,7 @@ async function fetchCardEntries() {
     .order("entry_id", { ascending: true });
 
   if (fallbackError) {
-    throw buildLoadError(error.message, fallbackError.message);
+    throw buildLoadError("Direct card_entries fetch failed.", fallbackError.message);
   }
 
   return sortCardEntries(fallbackData ?? []);

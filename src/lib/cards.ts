@@ -51,6 +51,56 @@ const STAGE_PROMPTS: Record<WeekId, Record<StageId, string>> = {
   },
 };
 
+const WEEK_ONE_RELATED_IMAGE_MODULES = {
+  ...import.meta.glob("../../images/Week 1/Stage 1/*.jpg", {
+    eager: true,
+    import: "default",
+  }),
+  ...import.meta.glob("../../images/Week 1/Stage 2/*.jpg", {
+    eager: true,
+    import: "default",
+  }),
+} as Record<string, string>;
+
+function buildWeekOneRelatedImageLookup() {
+  const lookup = new Map<string, string>();
+
+  for (const [path, url] of Object.entries(WEEK_ONE_RELATED_IMAGE_MODULES)) {
+    const match = path.match(/wk1_stage(\d)_n(\d+)\.jpg$/i);
+
+    if (!match) {
+      continue;
+    }
+
+    lookup.set(`${match[1]}-${match[2]}`, url);
+  }
+
+  return lookup;
+}
+
+const WEEK_ONE_RELATED_IMAGE_LOOKUP = buildWeekOneRelatedImageLookup();
+
+function buildWeekOneRelatedAssetInfo(entry: CardEntry) {
+  if (entry.week_number !== 1) {
+    return null;
+  }
+
+  const stage = entry.stage as StageId;
+  const entryIndex = Number.parseInt(entry.entry_id, 10);
+
+  if (!Number.isFinite(entryIndex)) {
+    return null;
+  }
+
+  const relationIndex = entryIndex + 1;
+
+  return {
+    assetName: `wk1_stage${stage}_n${relationIndex}`,
+    lookupKey: `${stage}-${relationIndex}`,
+    relationLabel: `n${relationIndex}`,
+  };
+}
+
 function buildCountRows<T extends string | number>(
   counts: Map<T, number>,
   formatter: (key: T) => string,
@@ -105,6 +155,30 @@ function buildStagePrompt(weeks: WeekId[], stage: StageId) {
   return `${formatWeekSelectionLabel("cards", weeks)} combined through the ${STAGE_CARD_LABELS[stage]} question set.`;
 }
 
+function pickOverviewRelatedImage(entries: CardEntry[]) {
+  const sortedWeekOneEntries = entries
+    .filter((entry) => entry.week_number === 1)
+    .sort((left, right) => Number.parseInt(left.entry_id, 10) - Number.parseInt(right.entry_id, 10));
+
+  for (const entry of sortedWeekOneEntries) {
+    const imageSrc = resolveWeekOneRelatedImage(entry);
+
+    if (!imageSrc) {
+      continue;
+    }
+
+    return {
+      relatedImageSrc: imageSrc,
+      relatedAssetName: resolveWeekOneRelatedAssetName(entry),
+    };
+  }
+
+  return {
+    relatedImageSrc: null,
+    relatedAssetName: null,
+  };
+}
+
 function buildStageOverviewPanel(stage: StageId, entries: CardEntry[], weeks: WeekId[]): OverviewStagePanel {
   const stageEntries = entries.filter((entry) => entry.stage === stage);
   const totals = [0, 0, 0, 0];
@@ -128,6 +202,7 @@ function buildStageOverviewPanel(stage: StageId, entries: CardEntry[], weeks: We
   const safeTotal = totalEntries || 1;
   const averageScores = totals.map((total) => total / safeTotal) as [number, number, number, number];
   const genderRows = buildGenderRows(stageEntries);
+  const relatedImage = pickOverviewRelatedImage(stageEntries);
 
   return {
     stage,
@@ -140,11 +215,21 @@ function buildStageOverviewPanel(stage: StageId, entries: CardEntry[], weeks: We
     averageScores,
     ageRows: buildAgeRows(stageEntries),
     genderRows,
+    relatedImageSrc: relatedImage.relatedImageSrc,
+    relatedAssetName: relatedImage.relatedAssetName,
   };
 }
 
 export function uniqueSortedWeeks(weeks: WeekId[]): WeekId[] {
   return Array.from(new Set(weeks)).sort((left, right) => left - right) as WeekId[];
+}
+
+export function getStageCardLabel(stage: StageId) {
+  return STAGE_CARD_LABELS[stage];
+}
+
+export function getStagePrompt(week: WeekId, stage: StageId) {
+  return STAGE_PROMPTS[week][stage];
 }
 
 export function normalizeSelection(mode: ViewMode, weeks: WeekId[]) {
@@ -242,6 +327,24 @@ export function formatGenderKey(value: string | null) {
     .split("_")
     .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
     .join(" ");
+}
+
+export function resolveWeekOneRelatedAssetName(entry: CardEntry) {
+  return buildWeekOneRelatedAssetInfo(entry)?.assetName ?? null;
+}
+
+export function resolveWeekOneRelatedRelationLabel(entry: CardEntry) {
+  return buildWeekOneRelatedAssetInfo(entry)?.relationLabel ?? null;
+}
+
+export function resolveWeekOneRelatedImage(entry: CardEntry) {
+  const info = buildWeekOneRelatedAssetInfo(entry);
+
+  if (!info) {
+    return null;
+  }
+
+  return WEEK_ONE_RELATED_IMAGE_LOOKUP.get(info.lookupKey) ?? null;
 }
 
 export function resolveDoodleImageUrl(doodleStoragePath: string | null) {

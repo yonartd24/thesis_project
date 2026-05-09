@@ -1,0 +1,80 @@
+a ver me fallan las llamadas me pone api key error: mira te paso todo y lo haces bien: Create standby key
+Set up a new key which you can switch to once it has been picked up by all components of your application.
+
+
+Create Standby Key
+Status	Key ID	Type		Actions
+Current key
+6218ee32-885f-409d-9109-ced737998e36
+ECC (P-256)
+
+
+Previously used keys
+These JWT signing keys are still used to verify tokens that are yet to expire. Revoke once all tokens have expired.
+
+Status	Key ID	Type	Last rotated at	Actions
+Previous key
+b0f641ec-5bc4-4f91-bf81-fc86e18981c2
+Legacy HS256 (Shared Secret)
+
+7 days ago	
+Publishable and secret API keys
+Legacy anon, service_role API keys
+Your new API keys are here
+
+We've updated our API keys to better support your application needs. Join the discussion on GitHub
+
+Having trouble with the new API keys? Contact support
+
+
+Publishable key
+This key is safe to use in a browser if you have enabled Row Level Security (RLS) for your tables and configured policies.
+
+
+New publishable key
+Name	API Key	
+default
+No description
+sb_publishable_hyBrZtyj9SYIzu59qrJsSw_QSfJjijZ
+
+
+Publishable keys can be safely shared publicly
+
+Secret keys
+These API keys allow privileged access to your project's APIs. Use in servers, functions, workers or other backend components of your application.
+
+
+New secret key
+Name	API Key	
+default
+No description
+sb_secret_Kp3PW
+mnfQK8IDatev-9PLg_ASr2jVck
+
+
+
+anon
+public
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmZmF0Z3JncXZ6Y3ZlaWtpa3JyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2Mjg5OTMsImV4cCI6MjA5MjIwNDk5M30.BSSw0W_5LQ-bqaVZPbSlanDx97H1NtmXXis6C4RAu6c
+This key is safe to use in a browser if you have enabled Row Level Security for your tables and configured policies. Prefer using Publishable API keys instead.
+
+service_role
+secret
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpmZmF0Z3JncXZ6Y3ZlaWtpa3JyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjYyODk5MywiZXhwIjoyMDkyMjA0OTkzfQ.XtvZNJqb4yGj10fj61Vuq6cW898H6Blt6MczC6bbFmA
+This key has the ability to bypass Row Level Security. Never share it publicly. If leaked, generate a new JWT secret immediately. Prefer using Secret API keys instead.
+
+Disable legacy API keys
+
+Make sure you are no longer using your legacy API keys before proceeding.
+
+
+Disable JWT-based API keysGeneral settings
+Thesis - 8th floor habits
+Project name
+Displayed throughout the dashboard.
+zffatgrgqvzcveikikrr
+Project ID
+Reference used in APIs and URLs.
+
+Save changes
+Project access, 
