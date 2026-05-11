@@ -1,3 +1,7 @@
+export type ScoreCategory = "Nutrition" | "Screens" | "Activity" | "Other";
+
+export type CardScoreMap = Record<ScoreCategory, number>;
+
 export type CardEntry = {
   entry_id: string;
   week_number: number;
@@ -9,6 +13,7 @@ export type CardEntry = {
   participant_age: number | null;
   participant_gender: string | null;
   doodle_storage_path: string | null;
+  scores: CardScoreMap;
 };
 
 export type WeekId = 1 | 2 | 3;

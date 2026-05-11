@@ -28,7 +28,7 @@ function formatAverageAge(value: number | null) {
 function DistributionList({ title, rows }: DistributionListProps) {
   return (
     <div className="grid gap-3">
-      <h5 className="m-0 text-[clamp(2rem,4.8vw,2.65rem)] font-black leading-[0.95] tracking-[-0.04em] text-black">{title}</h5>
+      <h5 className="m-0 text-[clamp(2rem,4.8vw,2.65rem)] font-bold leading-[0.95] tracking-[-0.04em] text-black">{title}</h5>
       {rows.length ? (
         rows.map((row) => (
           <div key={`${title}-${row.label}`} className="grid gap-0.5 text-[14px] leading-tight text-black/75">
@@ -99,11 +99,11 @@ function OverviewStageCard({ panel, accent, index }: OverviewStageCardProps) {
           </div>
 
           <div className="mt-6 flex flex-wrap items-end justify-between gap-4">
-            <p className="m-0 text-[clamp(1.45rem,3.3vw,2.2rem)] font-black leading-none tracking-[-0.06em] text-black">
+            <p className="m-0 text-[clamp(1.45rem,3.3vw,2.2rem)] font-bold leading-none tracking-[-0.06em] text-black">
               <span className="mr-1">Gender:</span>
               <span className="font-medium">{panel.dominantGender ?? "Not shared"}</span>
             </p>
-            <p className="m-0 text-[clamp(1.45rem,3.3vw,2.2rem)] font-black leading-none tracking-[-0.06em] text-black">
+            <p className="m-0 text-[clamp(1.45rem,3.3vw,2.2rem)] font-bold leading-none tracking-[-0.06em] text-black">
               <span className="mr-1">Age:</span>
               <span className="font-medium">{panel.averageAge == null ? "Unknown" : Math.round(panel.averageAge)}</span>
             </p>
@@ -112,14 +112,13 @@ function OverviewStageCard({ panel, accent, index }: OverviewStageCardProps) {
 
       </article>
 
-      <aside className=" mt-6 grid w-full max-w-[380px] grid-cols-1 gap-8 px-2 md:max-w-[420px]">
+      <aside className="mt-6 grid w-full grid-cols-2 gap-8 px-2">
         <div className="grid gap-3">
           <DistributionList title="Age" rows={panel.ageRows} />
         </div>
         <div className="grid gap-3">
           <DistributionList title="Gender" rows={panel.genderRows} />
         </div>
-        
       </aside>
     </div>
   );

@@ -72,7 +72,7 @@ export function DoodlePreview({ doodleStoragePath, entryId, weekLabel, accent }:
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-black/10 px-4 py-4 md:px-6">
               <div>
                 <p className="m-0 text-[11px] uppercase tracking-[0.18em] text-black/50">{weekLabel}</p>
-                <h3 className="m-0 mt-1 text-[20px] font-black tracking-[-0.04em] text-black md:text-[28px]">
+                <h3 className="m-0 mt-1 text-[20px] font-bold tracking-[-0.04em] text-black md:text-[28px]">
                   Card back #{entryId}
                 </h3>
               </div>

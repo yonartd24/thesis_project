@@ -1,6 +1,6 @@
 import { useDeferredValue, useMemo } from "react";
 import { OverviewPanel } from "./components/OverviewPanel";
-import { ScaleLegend } from "./components/ScaleLegend";
+
 import { VirtualizedCardGrid } from "./components/VirtualizedCardGrid";
 import { WeekTabs } from "./components/WeekTabs";
 import {
@@ -14,7 +14,7 @@ import { useCardEntries } from "./hooks/useCardEntries";
 import { useDatasetSelection } from "./store/useDatasetSelection";
 
 export default function App() {
-  const { entries, loading, error, envMissing } = useCardEntries();
+  const { entries, loading, error } = useCardEntries();
   const mode = useDatasetSelection((state) => state.mode);
   const selectedWeeks = useDatasetSelection((state) => state.weeks);
   const toggleWeek = useDatasetSelection((state) => state.toggleWeek);
@@ -66,8 +66,8 @@ export default function App() {
               Multi-week Card Archive
             </h1>
             <p className="mt-4 max-w-3xl text-[15px] leading-6 text-black/65">
-              Mobile-first archive of the weekly habit cards, designed to switch between
-              individual responses and general summaries without reloading the dataset.
+              Desktop archive of the weekly habit cards, designed to switch between
+              individual responses and general summaries across all collected weeks.
             </p>
           </div>
 
@@ -107,21 +107,7 @@ export default function App() {
             </div>
           </div>
 
-          {mode === "cards" ? (
-            <div className="mt-8">
-              <ScaleLegend accent={gradient} />
-            </div>
-          ) : null}
 
-          {envMissing ? (
-            <div className="mt-6 rounded-2xl border border-black/15 bg-white/80 px-5 py-4 text-black">
-              <h3 className="m-0 text-lg font-semibold">Supabase keys are missing</h3>
-              <p className="mt-2 text-sm leading-6 text-black/65">
-                Create a local <code>.env</code> file from <code>.env.example</code>{" "}
-                and add your project URL plus publishable key before running the app.
-              </p>
-            </div>
-          ) : null}
 
           {error ? (
             <div className="mt-6 rounded-2xl border border-[#ff2b2b]/35 bg-white/80 px-5 py-4 text-black">
@@ -134,12 +120,12 @@ export default function App() {
             <div className="mt-6 rounded-2xl border border-black/15 bg-white/80 px-5 py-4 text-black">
               <h3 className="m-0 text-lg font-semibold">Loading archive</h3>
               <p className="mt-2 text-sm leading-6 text-black/65">
-                Pulling the cached card dataset from Supabase and preparing the active view.
+                Parsing the local CSV archive and preparing the active view.
               </p>
             </div>
           ) : null}
 
-          {!loading && !error && !envMissing && !deferredEntries.length ? (
+          {!loading && !error && !deferredEntries.length ? (
             <div className="mt-6 rounded-2xl border border-black/15 bg-white/80 px-5 py-4 text-black">
               <h3 className="m-0 text-lg font-semibold">No records match this selection</h3>
               <p className="mt-2 text-sm leading-6 text-black/65">
@@ -148,7 +134,7 @@ export default function App() {
             </div>
           ) : null}
 
-          {!loading && !error && !envMissing && deferredEntries.length ? (
+          {!loading && !error && deferredEntries.length ? (
             mode === "overview" ? (
               <OverviewPanel metrics={overviewMetrics} mode={mode} weeks={effectiveWeeks} />
             ) : (

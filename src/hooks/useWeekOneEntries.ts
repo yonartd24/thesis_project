@@ -6,17 +6,15 @@ type WeekOneState = {
   cards: CardEntry[];
   loading: boolean;
   error: string | null;
-  envMissing: boolean;
 };
 
 export function useWeekOneEntries(): WeekOneState {
-  const { entries, loading, error, envMissing } = useCardEntries();
+  const { entries, loading, error } = useCardEntries();
   const cards = useMemo(() => entries.filter((entry) => entry.week_number === 1), [entries]);
 
   return {
     cards,
     loading,
     error,
-    envMissing,
   };
 }

@@ -55,7 +55,7 @@ export function RelatedImagePreview({
     return (
       <div className="grid gap-3 rounded-[24px] border border-dashed border-black/15 bg-[#f7f3ec] p-4 text-black shadow-[0_12px_24px_rgba(16,16,16,0.05)]">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <h4 className="m-0 text-[11px] font-black uppercase tracking-[0.18em] text-black">
+          <h4 className="m-0 text-[11px] font-bold uppercase tracking-[0.18em] text-black">
             Related card
           </h4>
           {assetName ? (
@@ -89,7 +89,7 @@ export function RelatedImagePreview({
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-black/10 px-4 py-4 md:px-6">
           <div>
             <p className="m-0 text-[11px] uppercase tracking-[0.18em] text-black/50">{weekLabel}</p>
-            <h3 className="m-0 mt-1 text-[20px] font-black tracking-[-0.04em] text-black md:text-[28px]">
+            <h3 className="m-0 mt-1 text-[20px] font-bold tracking-[-0.04em] text-black md:text-[28px]">
               {assetName ?? `Related image #${entryId}`}
             </h3>
           </div>
