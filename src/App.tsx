@@ -66,8 +66,7 @@ export default function App() {
               Multi-week Card Archive
             </h1>
             <p className="mt-4 max-w-3xl text-[15px] leading-6 text-black/65">
-              Desktop archive of the weekly habit cards, designed to switch between
-              individual responses and general summaries across all collected weeks.
+              An interactive exploration of human rhythm. This archive reconstructs 294 physical moments collected on the 8th floor, translating personal habits into a digital choreography of color and light. Each card is a ghost of a routine, now preserved through code.
             </p>
           </div>
 
