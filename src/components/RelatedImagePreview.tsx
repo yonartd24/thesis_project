@@ -95,13 +95,7 @@ export function RelatedImagePreview({
           </div>
 
           <div className="flex flex-wrap gap-2">
-            <a
-              href={imageSrc}
-              download={`${assetName ?? `week1-related-${entryId}`}.jpg`}
-              className="rounded-full border border-black px-4 py-2 text-[12px] font-bold uppercase tracking-[0.16em] text-black transition-colors hover:bg-black hover:text-white"
-            >
-              Download
-            </a>
+
             <button
               type="button"
               className="rounded-full border border-black/15 bg-white px-4 py-2 text-[12px] font-bold uppercase tracking-[0.16em] text-black transition-colors hover:bg-black hover:text-white"
@@ -150,12 +144,6 @@ export function RelatedImagePreview({
 
         <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-black/70 to-transparent px-3 py-3 text-white">
           <span className="text-[10px] font-semibold uppercase tracking-[0.18em]">Open related image</span>
-          <span
-            className="rounded-full border px-2 py-1 text-[10px] font-bold uppercase tracking-[0.18em]"
-            style={{ borderColor: accent, backgroundColor: "rgba(16,16,16,0.18)" }}
-          >
-            Download jpg
-          </span>
         </div>
       </button>
 

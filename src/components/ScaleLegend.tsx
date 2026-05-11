@@ -7,7 +7,7 @@ type ScaleLegendProps = {
 export function ScaleLegend({ accent = "#7c7c7c" }: ScaleLegendProps) {
   return (
     <div aria-hidden="true">
-      <div className="grid grid-cols-5">
+      <div className="flex justify-between">
         {scaleTicks.map((tick) => (
           <div key={tick} className="flex flex-col items-center gap-1.5 text-black">
             <span className="text-[18px] font-bold leading-none tracking-[-0.04em] md:text-[28px]">

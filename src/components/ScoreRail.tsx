@@ -28,7 +28,7 @@ type ScoreRailProps = {
  */
 function scoreToProgress(score: number) {
   const clamped = Math.min(Math.max(score, 1), 5);
-  return (2 * clamped - 1) / 10;
+  return (clamped - 1) / 4;
 }
 
 /**

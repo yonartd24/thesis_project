@@ -51,7 +51,7 @@ export default function App() {
 
   const boardDescription =
     mode === "overview"
-      ? "Two aggregated cards, one per stage, with age, gender and prompt-level summaries for the active weeks."
+      ? "Aggregated summaries of all responses for the active weeks."
       : "Individual responses for the active weeks with animated score rails and ready-to-open card backs.";
 
   return (

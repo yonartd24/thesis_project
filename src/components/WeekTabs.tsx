@@ -37,7 +37,6 @@ export function WeekTabs({ mode, selectedWeeks, onToggleWeek, onToggleOverview }
                     borderColor: color,
                     backgroundColor: color,
                     color: "#ffffff",
-                    boxShadow: "0 14px 24px rgba(16,16,16,0.12)",
                   }
                 : {
                     borderColor: color,
@@ -60,9 +59,10 @@ export function WeekTabs({ mode, selectedWeeks, onToggleWeek, onToggleOverview }
           overviewActive
             ? {
                 borderColor: "transparent",
-                background: overviewGradient,
+                backgroundImage: overviewGradient,
+                backgroundOrigin: "border-box",
+                backgroundClip: "border-box",
                 color: "#ffffff",
-                boxShadow: "0 14px 24px rgba(16,16,16,0.12)",
               }
             : {
                 borderColor: "#101010",

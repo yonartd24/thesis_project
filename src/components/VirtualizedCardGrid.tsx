@@ -38,7 +38,7 @@ export function VirtualizedCardGrid({ entries }: VirtualizedCardGridProps) {
   if (entries.length <= VIRTUALIZATION_THRESHOLD) {
     return (
       <div className="px-1 sm:px-2 md:mt-10 md:px-3 lg:px-4">
-        <div className="mx-auto grid w-full max-w-[1080px] grid-cols-1 gap-y-6 md:gap-y-8">
+        <div className="mx-auto grid w-full max-w-[1180px] grid-cols-1 gap-y-6 md:gap-y-8">
           {entries.map((card) => (
             <CardEntryCard key={`${card.week_number}-${card.stage}-${card.entry_id}`} card={card} />
           ))}
@@ -51,7 +51,7 @@ export function VirtualizedCardGrid({ entries }: VirtualizedCardGridProps) {
     <section className="">
       <div ref={parentRef} className="h-[76vh] py-6 overflow-auto px-2">
         <div
-          className="relative mx-auto w-full max-w-[1080px]"
+          className="relative mx-auto w-full max-w-[1180px]"
           style={{
             height: `${rowVirtualizer.getTotalSize()}px`,
           }}

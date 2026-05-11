@@ -53,10 +53,10 @@ function OverviewStageCard({ panel, accent, index }: OverviewStageCardProps) {
   const { ref, isVisible } = useScrollReveal<HTMLElement>({ rootMargin: "0px 0px -12% 0px" });
 
   return (
-    <div className="mx-auto w-full max-w-[1280px]">
+    <div className="mx-auto w-full max-w-[1180px]">
       <article
         ref={ref}
-        className="grid gap-6 rounded-[30px] bg-white px-4 py-5 shadow-[0_24px_50px_rgba(16,16,16,0.08)] ring-1 ring-black/8 transition-[opacity,transform] duration-700 md:px-6 md:py-6"
+        className="grid gap-6 rounded-[30px] border bg-white px-4 py-5 ring-black/8 transition-[opacity,transform] duration-700 md:px-6 md:py-6"
         style={{
           opacity: isVisible ? 1 : 0,
           transform: isVisible ? "translateX(0px)" : "translateX(-42px)",
@@ -68,7 +68,12 @@ function OverviewStageCard({ panel, accent, index }: OverviewStageCardProps) {
             <div className="flex flex-wrap items-center gap-2">
               <span
                 className="rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white"
-                style={{ borderColor: "transparent", background: accent }}
+                style={{
+                  borderColor: "transparent",
+                  backgroundImage: accent,
+                  backgroundOrigin: "border-box",
+                  backgroundClip: "border-box"
+                }}
               >
                 {panel.cardLabel}
               </span>
@@ -76,9 +81,7 @@ function OverviewStageCard({ panel, accent, index }: OverviewStageCardProps) {
                 {panel.totalEntries} responses
               </span>
             </div>
-            <span className="text-[11px] uppercase tracking-[0.18em] text-black/45">
-              Avg age {formatAverageAge(panel.averageAge)}
-            </span>
+
           </div>
 
           <ScaleLegend accent={accent} />

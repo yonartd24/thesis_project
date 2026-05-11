@@ -25,9 +25,9 @@ function formatAge(value: number | null) {
 
 function ScoreScaleMarkers({ accent }: { accent: string }) {
   return (
-    <div className="mb-5 grid grid-cols-5 md:mb-6">
+    <div className="mb-5 flex justify-between md:mb-6">
       {[1, 2, 3, 4, 5].map((value) => (
-        <div key={value} className="grid justify-items-center gap-1 text-center">
+        <div key={value} className="flex flex-col items-center gap-1 text-center">
           <span className="text-[clamp(1.55rem,3.4vw,2.25rem)] font-bold leading-none tracking-[-0.08em] text-black">
             {value}
           </span>
@@ -57,10 +57,11 @@ function WeekOneEntryCard({ card }: WeekOneCardProps) {
   return (
     <article
       ref={ref}
-      className="w-full rounded-[32px] bg-white px-3 py-4 text-black shadow-[0_20px_44px_rgba(16,16,16,0.08)] ring-1 ring-[#8fb4ff] transition-[opacity,transform] duration-700 sm:px-5 sm:py-5 md:px-7 md:py-6 lg:px-8"
+      className="w-full rounded-[32px] border bg-white px-3 py-4 text-black transition-[opacity,transform] duration-700 sm:px-5 sm:py-5 md:px-7 md:py-6 lg:px-8"
       style={{
         opacity: isVisible ? 1 : 0,
         transform: isVisible ? "translateX(0px)" : "translateX(-38px)",
+        borderColor: weekColor,
       }}
     >
       <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_272px] lg:items-center lg:gap-7">
@@ -77,10 +78,6 @@ function WeekOneEntryCard({ card }: WeekOneCardProps) {
                 {relatedRelationLabel ? `Related ${relatedRelationLabel}` : "Related image pending"}
               </span>
             </div>
-
-            <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-black/45">
-              {WEEK_LABELS[week]} participant #{card.entry_id}
-            </span>
           </div>
 
           <ScoreScaleMarkers accent={weekColor} />
@@ -112,7 +109,10 @@ function WeekOneEntryCard({ card }: WeekOneCardProps) {
           </div>
         </div>
 
-        <aside className="grid content-start gap-4 lg:pl-2">
+        <aside className="grid content-start gap-3 lg:pl-2">
+          <span className="text-[11px] font-medium uppercase tracking-[0.24em] text-black/45 text-center">
+            {WEEK_LABELS[week]} participant #{card.entry_id}
+          </span>
           <RelatedImagePreview
             imageSrc={relatedImageSrc}
             entryId={card.entry_id}

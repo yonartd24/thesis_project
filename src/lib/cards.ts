@@ -318,7 +318,7 @@ export function buildWeekGradient(mode: ViewMode, weeks: WeekId[]) {
   const colors = effectiveWeeks.map((week) => WEEK_COLORS[week]);
 
   if (colors.length === 1) {
-    return colors[0];
+    return `linear-gradient(90deg, ${colors[0]} 0%, ${colors[0]} 100%)`;
   }
 
   const step = colors.length === 1 ? 100 : 100 / (colors.length - 1);
